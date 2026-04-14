@@ -112,45 +112,51 @@
 
         <!-- КАРТОЧКИ ЧЛЕНОВ СЕМЬИ -->
         <section class="card">
-            <h2>👨‍👩‍👧‍👧 Профили семьи Рониных</h2>
+            <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 15px;">
+                <h2 style="margin: 0; border: none; padding: 0;">👨‍👩‍👧‍👧 Профили семьи Рониных</h2>
+                <button class="add-btn" onclick="alert('✨ Здесь можно добавить нового члена семьи (функция в разработке)')">➕ Добавить</button>
+            </div>
             <div class="family-profiles" id="familyProfiles"></div>
         </section>
 
         <!-- МИНИ-ГРАФИК ЗДОРОВЬЯ -->
         <section class="card">
             <h2>📊 Динамика здоровья семьи</h2>
-            <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 20px;">
-                <div>
-                    <p style="font-weight: bold; margin-bottom: 10px;">💓 Давление Папы (за неделю)</p>
+            <div class="health-charts">
+                <div class="chart-block">
+                    <p class="chart-title">💓 Давление Папы (за неделю)</p>
                     <div class="chart-bar">
-                        <div style="display: flex; justify-content: space-between; margin-bottom: 5px; font-size: 0.85rem;">
+                        <div class="chart-labels">
                             <span>120/80</span><span>125/82</span><span>118/78</span><span>122/80</span><span>120/79</span>
                         </div>
-                        <div style="display: flex; gap: 5px; height: 60px; align-items: flex-end;">
-                            <div style="flex: 1; background: #0d9488; height: 40px; border-radius: 8px 8px 0 0;"></div>
-                            <div style="flex: 1; background: #14b8a6; height: 48px; border-radius: 8px 8px 0 0;"></div>
-                            <div style="flex: 1; background: #0d9488; height: 35px; border-radius: 8px 8px 0 0;"></div>
-                            <div style="flex: 1; background: #14b8a6; height: 42px; border-radius: 8px 8px 0 0;"></div>
-                            <div style="flex: 1; background: #0d9488; height: 38px; border-radius: 8px 8px 0 0;"></div>
+                        <div class="chart-bars">
+                            <div class="bar" style="height: 40px;"></div>
+                            <div class="bar" style="height: 48px;"></div>
+                            <div class="bar" style="height: 35px;"></div>
+                            <div class="bar" style="height: 42px;"></div>
+                            <div class="bar" style="height: 38px;"></div>
                         </div>
                     </div>
                 </div>
-                <div>
-                    <p style="font-weight: bold; margin-bottom: 10px;">⚖️ Вес членов семьи (текущий)</p>
-                    <div style="display: flex; align-items: flex-end; gap: 8px; height: 80px;">
-                        <div style="flex: 1; text-align: center;"><div style="background: #0d9488; height: 87px; border-radius: 8px 8px 0 0;"></div><span style="font-size: 12px;">Папа 87кг</span></div>
-                        <div style="flex: 1; text-align: center;"><div style="background: #14b8a6; height: 60px; border-radius: 8px 8px 0 0;"></div><span style="font-size: 12px;">Мама 60кг</span></div>
-                        <div style="flex: 1; text-align: center;"><div style="background: #0d9488; height: 55px; border-radius: 8px 8px 0 0;"></div><span style="font-size: 12px;">Катя 55кг</span></div>
-                        <div style="flex: 1; text-align: center;"><div style="background: #14b8a6; height: 50px; border-radius: 8px 8px 0 0;"></div><span style="font-size: 12px;">Ева 50кг</span></div>
+                <div class="chart-block">
+                    <p class="chart-title">⚖️ Вес членов семьи (текущий)</p>
+                    <div class="weight-chart">
+                        <div class="weight-item"><div class="weight-label">👨 Папа</div><div class="weight-bar-container"><div class="weight-bar" style="width: 100%;">87 кг</div></div></div>
+                        <div class="weight-item"><div class="weight-label">👩 Мама</div><div class="weight-bar-container"><div class="weight-bar" style="width: 69%;">60 кг</div></div></div>
+                        <div class="weight-item"><div class="weight-label">👩 Катя</div><div class="weight-bar-container"><div class="weight-bar" style="width: 63%;">55 кг</div></div></div>
+                        <div class="weight-item"><div class="weight-label">👧 Ева</div><div class="weight-bar-container"><div class="weight-bar" style="width: 57%;">50 кг</div></div></div>
                     </div>
                 </div>
             </div>
-            <p style="font-size: 12px; color: #888; margin-top: 15px;">📈 Данные обновляются еженедельно. Следим за здоровьем вместе!</p>
+            <p class="chart-footer">📈 Данные обновляются еженедельно. Следим за здоровьем вместе!</p>
         </section>
 
         <!-- ТРЕКЕР ПРИЁМА ЛЕКАРСТВ -->
         <section class="card">
-            <h2>💊 Трекер приёма лекарств</h2>
+            <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 15px;">
+                <h2 style="margin: 0; border: none; padding: 0;">💊 Трекер приёма лекарств</h2>
+                <button class="add-btn" id="addMedBtn">➕ Добавить</button>
+            </div>
             <p style="margin-bottom: 15px; color: #555;">Отмечайте принятые лекарства. Счётчик обнуляется каждый день.</p>
             
             <!-- Поиск -->
@@ -170,16 +176,32 @@
             <div id="waterTracker" class="water-tracker"></div>
         </section>
 
+        <!-- АНАЛИЗЫ -->
+        <section class="card">
+            <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 15px;">
+                <h2 style="margin: 0; border: none; padding: 0;">🔬 Анализы семьи</h2>
+                <button class="add-btn" id="addAnalysisBtn">➕ Добавить</button>
+            </div>
+            <p style="margin-bottom: 15px; color: #555;">Результаты последних анализов. Храните историю в одном месте.</p>
+            <div id="analysisList" class="analysis-list"></div>
+        </section>
+
         <!-- КАЛЕНДАРЬ ПРИВИВОК -->
         <section class="card">
-            <h2>💉 Календарь прививок</h2>
+            <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 15px;">
+                <h2 style="margin: 0; border: none; padding: 0;">💉 Календарь прививок</h2>
+                <button class="add-btn" id="addVaccineBtn">➕ Добавить</button>
+            </div>
             <div id="vaccineList" class="vaccine-list"></div>
             <p style="font-size: 12px; color: #888; margin-top: 15px;">🟢 Сделано &nbsp;&nbsp;🟡 Скоро &nbsp;&nbsp;🔴 Просрочено</p>
         </section>
 
         <!-- СРОКИ ГОДНОСТИ -->
         <section class="card">
-            <h2>📅 Сроки годности аптечки</h2>
+            <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 15px;">
+                <h2 style="margin: 0; border: none; padding: 0;">📅 Сроки годности аптечки</h2>
+                <button class="add-btn" id="addExpiryBtn">➕ Добавить</button>
+            </div>
             <p style="margin-bottom: 15px; color: #555;">Цвет показывает актуальность. Проверяйте раз в месяц.</p>
             <div id="expiryList" class="expiry-list"></div>
             <p style="font-size: 12px; color: #888; margin-top: 15px;">🟢 Срок более 3 мес. &nbsp;&nbsp;🟡 Истекает скоро &nbsp;&nbsp;🔴 Просрочено</p>
@@ -217,9 +239,8 @@
 
         <!-- ПОДВАЛ -->
         <footer>
-            <p>🚀 Проект для конкурса</p>
+            <p>🚀 Проект для конкурса. Заботимся о здоровье с помощью IT!</p>
             <p style="margin-top: 10px; font-size: 14px;">🔒 Все данные хранятся локально. Конфиденциальность гарантирована.</p>
-            <p style="margin-top: 8px; font-size: 14px;">❤️ Семья</p>
         </footer>
     </div>
 
