@@ -1,0 +1,586 @@
+/* style.css */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: system-ui, -apple-system, 'Segoe UI', Roboto, sans-serif;
+}
+
+body {
+    background: linear-gradient(145deg, #0f766e 0%, #0d9488 50%, #14b8a6 100%);
+    min-height: 100vh;
+    padding: 20px;
+}
+
+.container {
+    max-width: 1000px;
+    margin: 0 auto;
+}
+
+header {
+    text-align: center;
+    margin-bottom: 30px;
+    color: white;
+}
+
+header h1 {
+    font-size: 2.5rem;
+    margin-bottom: 10px;
+    text-shadow: 2px 2px 4px rgba(0,0,0,0.2);
+}
+
+.subtitle {
+    font-size: 1.1rem;
+    opacity: 0.95;
+}
+
+/* Статистика */
+.stats-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 15px;
+    margin-bottom: 20px;
+}
+
+.stat-card {
+    background: white;
+    border-radius: 20px;
+    padding: 20px 15px;
+    text-align: center;
+    box-shadow: 0 8px 20px rgba(0,0,0,0.1);
+}
+
+.stat-icon {
+    font-size: 32px;
+    margin-bottom: 10px;
+}
+
+.stat-value {
+    font-size: 2rem;
+    font-weight: bold;
+    color: #0d9488;
+}
+
+.stat-label {
+    font-size: 0.85rem;
+    color: #64748b;
+    margin-top: 5px;
+}
+
+/* Карточки */
+.card {
+    background: white;
+    border-radius: 24px;
+    padding: 25px;
+    margin-bottom: 20px;
+    box-shadow: 0 12px 30px rgba(0,0,0,0.15);
+    transition: transform 0.2s;
+}
+
+.card:hover {
+    transform: translateY(-3px);
+}
+
+h2 {
+    display: flex;
+    align-items: center;
+    margin-bottom: 20px;
+    color: #1e293b;
+    border-bottom: 2px solid #e2e8f0;
+    padding-bottom: 10px;
+    font-size: 1.5rem;
+}
+
+.emergency {
+    background: linear-gradient(to right, #fff5f5, #ffffff);
+    border: 2px solid #feb2b2;
+}
+
+.emergency-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+    gap: 12px;
+}
+
+.emergency-item {
+    background: #fef2f2;
+    padding: 15px;
+    border-radius: 16px;
+    border-left: 5px solid #e53e3e;
+}
+
+.emergency-item .label {
+    font-weight: bold;
+    color: #991b1b;
+    display: block;
+    margin-bottom: 8px;
+    font-size: 1rem;
+}
+
+.emergency-item .value {
+    color: #1e293b;
+    line-height: 1.5;
+    font-size: 0.95rem;
+}
+
+.family-profiles {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
+    gap: 15px;
+}
+
+.profile-card {
+    background: #f0fdf4;
+    padding: 20px 10px;
+    border-radius: 20px;
+    text-align: center;
+    border: 1px solid #bbf7d0;
+    transition: all 0.2s;
+    cursor: pointer;
+}
+
+.profile-card:hover {
+    background: #dcfce7;
+    border-color: #4ade80;
+    transform: scale(1.02);
+}
+
+.profile-card.active {
+    background: #86efac;
+    border-color: #16a34a;
+}
+
+.profile-icon {
+    font-size: 48px;
+    margin-bottom: 10px;
+}
+
+.profile-name {
+    font-weight: bold;
+    font-size: 1.2rem;
+    margin-bottom: 10px;
+    color: #166534;
+}
+
+.profile-details {
+    font-size: 0.85rem;
+    color: #1e293b;
+    line-height: 1.5;
+    display: none;
+    text-align: left;
+}
+
+.profile-card.active .profile-details {
+    display: block;
+}
+
+.profile-hint {
+    font-size: 0.75rem;
+    color: #6b7280;
+    margin-top: 8px;
+}
+
+.medication-list {
+    margin-bottom: 20px;
+}
+
+.med-item {
+    display: flex;
+    align-items: center;
+    padding: 15px;
+    background: #f8fafc;
+    border-radius: 16px;
+    margin-bottom: 10px;
+    transition: all 0.2s;
+}
+
+.med-item.completed {
+    background: #f0fdf4;
+    opacity: 0.8;
+}
+
+.med-item input[type="checkbox"] {
+    width: 24px;
+    height: 24px;
+    margin-right: 15px;
+    cursor: pointer;
+    accent-color: #0d9488;
+}
+
+.med-info {
+    flex: 1;
+}
+
+.med-name {
+    font-weight: bold;
+    font-size: 1.1rem;
+    margin-bottom: 5px;
+}
+
+.med-for {
+    font-size: 0.9rem;
+    color: #64748b;
+}
+
+.med-time {
+    font-size: 0.85rem;
+    color: #0d9488;
+    font-weight: 500;
+}
+
+.completed-label {
+    text-decoration: line-through;
+    color: #94a3b8;
+}
+
+/* Трекер воды */
+.water-tracker {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
+    gap: 15px;
+}
+
+.water-person {
+    text-align: center;
+    padding: 15px;
+    background: #f0fdf4;
+    border-radius: 16px;
+}
+
+.water-name {
+    font-weight: bold;
+    margin-bottom: 10px;
+}
+
+.water-icon {
+    font-size: 24px;
+}
+
+.water-glasses {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 8px;
+    margin: 10px 0;
+}
+
+.water-glass {
+    width: 30px;
+    height: 30px;
+    border-radius: 50%;
+    background: #cbd5e0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    transition: all 0.2s;
+    font-size: 14px;
+}
+
+.water-glass.filled {
+    background: #3b82f6;
+    color: white;
+}
+
+.water-counter {
+    font-size: 14px;
+    color: #0d9488;
+    font-weight: 600;
+}
+
+/* Календарь прививок */
+.vaccine-list {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+}
+
+.vaccine-item {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 15px;
+    border-radius: 16px;
+    background: #f8fafc;
+}
+
+.vaccine-item.done {
+    background: #f0fdf4;
+    border-left: 6px solid #22c55e;
+}
+
+.vaccine-item.soon {
+    background: #fefce8;
+    border-left: 6px solid #eab308;
+}
+
+.vaccine-item.overdue {
+    background: #fef2f2;
+    border-left: 6px solid #ef4444;
+}
+
+.vaccine-info {
+    flex: 1;
+}
+
+.vaccine-name {
+    font-weight: bold;
+    font-size: 1.1rem;
+    margin-bottom: 5px;
+}
+
+.vaccine-for {
+    font-size: 0.9rem;
+    color: #64748b;
+}
+
+.vaccine-date {
+    font-size: 0.9rem;
+    color: #0d9488;
+    font-weight: 500;
+}
+
+.vaccine-status {
+    padding: 5px 15px;
+    border-radius: 20px;
+    font-size: 0.85rem;
+    font-weight: 600;
+    background: white;
+}
+
+.expiry-list {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.expiry-item {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 15px;
+    border-radius: 16px;
+    background: #f8fafc;
+}
+
+.expiry-item.green {
+    background: #f0fdf4;
+    border-left: 6px solid #22c55e;
+}
+
+.expiry-item.yellow {
+    background: #fefce8;
+    border-left: 6px solid #eab308;
+}
+
+.expiry-item.red {
+    background: #fef2f2;
+    border-left: 6px solid #ef4444;
+}
+
+.expiry-name {
+    font-weight: bold;
+    font-size: 1.1rem;
+}
+
+.expiry-date {
+    font-size: 0.95rem;
+    color: #475569;
+}
+
+.expiry-badge {
+    padding: 5px 12px;
+    border-radius: 20px;
+    font-size: 0.8rem;
+    font-weight: 600;
+    background: white;
+}
+
+/* Тревожный чемоданчик */
+.emergency-bag {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+    gap: 10px;
+}
+
+.bag-item {
+    display: flex;
+    align-items: center;
+    padding: 10px 15px;
+    background: #f8fafc;
+    border-radius: 12px;
+}
+
+.bag-item input {
+    margin-right: 10px;
+    width: 20px;
+    height: 20px;
+    accent-color: #0d9488;
+}
+
+.bag-item label {
+    cursor: pointer;
+    flex: 1;
+}
+
+.bag-item.completed label {
+    text-decoration: line-through;
+    color: #94a3b8;
+}
+
+.contacts .contacts-grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 12px;
+}
+
+.contact-item {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    background: #f1f5f9;
+    padding: 15px 18px;
+    border-radius: 16px;
+    border-left: 5px solid #0d9488;
+}
+
+.emoji {
+    font-size: 28px;
+    background: white;
+    width: 50px;
+    height: 50px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 50%;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+}
+
+.contact-name {
+    font-weight: bold;
+    color: #1e293b;
+    margin-bottom: 3px;
+}
+
+.contact-phone {
+    color: #0d9488;
+    text-decoration: none;
+    font-weight: 600;
+    font-size: 1.05rem;
+}
+
+.reset-btn {
+    background: #e2e8f0;
+    border: none;
+    padding: 12px 24px;
+    border-radius: 40px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: 0.2s;
+    border: 1px solid #cbd5e0;
+    color: #1e293b;
+    font-size: 1rem;
+    width: 100%;
+}
+
+.reset-btn:hover {
+    background: #cbd5e0;
+}
+
+footer {
+    text-align: center;
+    color: white;
+    margin-top: 30px;
+    opacity: 0.9;
+}
+
+#medSearchInput:focus {
+    border-color: #0d9488;
+    box-shadow: 0 0 0 3px rgba(13, 148, 136, 0.2);
+}
+
+/* Тёмная тема */
+body.dark-theme {
+    background: linear-gradient(145deg, #0a0f0f 0%, #1a2020 50%, #2d3748 100%);
+}
+
+body.dark-theme .card,
+body.dark-theme .stat-card {
+    background: #1e2a2a;
+    color: #e2e8f0;
+}
+
+body.dark-theme h2 {
+    color: #cbd5e0;
+    border-bottom-color: #3a4a4a;
+}
+
+body.dark-theme .emergency {
+    background: linear-gradient(to right, #2a1a1a, #1e2a2a);
+    border-color: #7f1d1d;
+}
+
+body.dark-theme .emergency-item {
+    background: #2a1a1a;
+}
+
+body.dark-theme .emergency-item .label {
+    color: #fca5a5;
+}
+
+body.dark-theme .profile-card {
+    background: #1a2a2a;
+    border-color: #2a4a3a;
+}
+
+body.dark-theme .profile-name {
+    color: #6ee7b7;
+}
+
+body.dark-theme .med-item {
+    background: #1a2a2a;
+}
+
+body.dark-theme .med-name {
+    color: #e2e8f0;
+}
+
+body.dark-theme .contact-item {
+    background: #1a2a2a;
+}
+
+body.dark-theme .contact-name {
+    color: #e2e8f0;
+}
+
+body.dark-theme .reset-btn {
+    background: #2d3748;
+    color: #e2e8f0;
+    border-color: #4a5568;
+}
+
+body.dark-theme .water-person,
+body.dark-theme .bag-item,
+body.dark-theme .vaccine-item,
+body.dark-theme .expiry-item {
+    background: #1a2a2a;
+}
+
+body.dark-theme .stat-value {
+    color: #6ee7b7;
+}
+
+@media (max-width: 600px) {
+    header h1 {
+        font-size: 2rem;
+    }
+    .emergency-grid {
+        grid-template-columns: 1fr;
+    }
+    .family-profiles {
+        grid-template-columns: 1fr 1fr;
+    }
+    .stats-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}

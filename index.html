@@ -1,0 +1,228 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>🏥 Семейная IT-аптечка</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <div class="container">
+        
+        <!-- ШАПКА С ТЁМНОЙ ТЕМОЙ -->
+        <header>
+            <div style="display: flex; justify-content: space-between; align-items: center;">
+                <h1 style="margin: 0;">🏥 Семейная IT-аптечка</h1>
+                <button id="themeToggle" style="background: white; border: none; font-size: 24px; padding: 8px 12px; border-radius: 40px; cursor: pointer;">🌙</button>
+            </div>
+            <p class="subtitle">Вся медицинская информация под рукой.</p>
+            
+            <!-- Счётчик дней без болезней -->
+            <div style="background: rgba(255,255,255,0.2); border-radius: 40px; padding: 10px 20px; margin-top: 15px; display: inline-block;">
+                <span style="font-size: 1.2rem;">🌟 Семья здорова уже </span>
+                <span id="healthyDaysCounter" style="font-size: 2rem; font-weight: bold; background: white; color: #0d9488; padding: 5px 15px; border-radius: 40px; margin: 0 10px;">47</span>
+                <span style="font-size: 1.2rem;">дней!</span>
+            </div>
+        </header>
+
+        <!-- СТАТИСТИКА ЗДОРОВЬЯ -->
+        <section class="stats-grid">
+            <div class="stat-card">
+                <div class="stat-icon">💊</div>
+                <div class="stat-value" id="totalMeds">5</div>
+                <div class="stat-label">Лекарств принимается</div>
+            </div>
+            <div class="stat-card">
+                <div class="stat-icon">💉</div>
+                <div class="stat-value" id="upcomingVaccines">2</div>
+                <div class="stat-label">Прививок скоро</div>
+            </div>
+            <div class="stat-card">
+                <div class="stat-icon">🌟</div>
+                <div class="stat-value" id="healthyStreak">47</div>
+                <div class="stat-label">Дней без болезней</div>
+            </div>
+            <div class="stat-card">
+                <div class="stat-icon">💧</div>
+                <div class="stat-value" id="waterPercent">65%</div>
+                <div class="stat-label">Воды выпито сегодня</div>
+            </div>
+        </section>
+
+        <!-- ЭКСТРЕННАЯ КАРТОЧКА -->
+        <section class="card emergency">
+            <div style="display: flex; align-items: center; gap: 10px; margin-bottom: 15px;">
+                <span style="font-size: 28px;">🚨</span>
+                <h2 style="margin: 0; border: none; padding: 0; color: #e53e3e;">Экстренная карточка</h2>
+            </div>
+            <p style="margin-bottom: 15px; color: #555;">Покажите эту информацию врачу скорой помощи:</p>
+            
+            <div class="emergency-grid">
+                <div class="emergency-item">
+                    <span class="label">👨 Папа (Сергей)</span>
+                    <span class="value">Группа крови: <strong>II (A) Rh+</strong><br>Аллергия: Нет</span>
+                </div>
+                <div class="emergency-item">
+                    <span class="label">👩 Мама (Татьяна)</span>
+                    <span class="value">Группа крови: <strong>I (0) Rh+</strong><br>Аллергия: Нет</span>
+                </div>
+                <div class="emergency-item">
+                    <span class="label">👩 Катя</span>
+                    <span class="value">Группа крови: <strong>II (A) Rh+</strong><br>Аллергия: Нет</span>
+                </div>
+                <div class="emergency-item">
+                    <span class="label">👧 Ева</span>
+                    <span class="value">Группа крови: <strong>I (0) Rh+</strong><br>Аллергия: Нет</span>
+                </div>
+                <div class="emergency-item">
+                    <span class="label">🐱 Барсик (3 года)</span>
+                    <span class="value">Аллергия: Курица<br>Ветклиника: +7 (3452) 12-34-56</span>
+                </div>
+            </div>
+            
+            <!-- Кнопка копирования -->
+            <div style="margin: 20px 0; text-align: center;">
+                <button id="copyEmergencyBtn" style="background: #0d9488; color: white; border: none; padding: 12px 25px; border-radius: 40px; font-weight: bold; cursor: pointer; font-size: 1rem;">
+                    📋 Скопировать экстренную информацию
+                </button>
+            </div>
+            
+            <!-- QR-код -->
+            <div style="margin-top: 20px; display: flex; align-items: center; gap: 20px; flex-wrap: wrap;">
+                <div class="qr-small">
+                    <img src="https://api.qrserver.com/v1/create-qr-code/?size=100x100&data=EMERGENCY%20Ronin%20Family:%20Dad%20Sergey%2041yo%20II(A)%20Penicillin;%20Mom%20Tatiana%2045yo%20I(0);%20Katya%2019yo%20II(A)%20Citrus;%20Eva%2015yo%20I(0);%20Cat%20Barsik%203yo%20Chicken" 
+                         alt="QR-код с экстренной информацией" 
+                         style="width: 80px; height: 80px; border-radius: 8px;">
+                </div>
+                <div>
+                    <p style="font-weight: bold; margin-bottom: 5px;">📱 QR-код на холодильник</p>
+                    <p style="font-size: 14px; color: #666;">Отсканируйте — вся экстренная информация откроется на телефоне.</p>
+                </div>
+            </div>
+            
+            <!-- Кнопка вызова скорой -->
+            <div style="margin-top: 25px; text-align: center;">
+                <a href="tel:103" style="display: inline-block; background: #e53e3e; color: white; padding: 15px 30px; border-radius: 50px; text-decoration: none; font-weight: bold; font-size: 1.2rem; box-shadow: 0 4px 15px rgba(229, 62, 62, 0.4); transition: transform 0.2s;">
+                    🚨 ЭКСТРЕННЫЙ ВЫЗОВ СКОРОЙ
+                </a>
+                <p style="font-size: 12px; color: #888; margin-top: 10px;">Нажмите для немедленного звонка в 103</p>
+            </div>
+        </section>
+
+        <!-- КАРТОЧКИ ЧЛЕНОВ СЕМЬИ -->
+        <section class="card">
+            <h2>👨‍👩‍👧‍👧 Профили семьи Рониных</h2>
+            <div class="family-profiles" id="familyProfiles"></div>
+        </section>
+
+        <!-- МИНИ-ГРАФИК ЗДОРОВЬЯ -->
+        <section class="card">
+            <h2>📊 Динамика здоровья семьи</h2>
+            <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 20px;">
+                <div>
+                    <p style="font-weight: bold; margin-bottom: 10px;">💓 Давление Папы (за неделю)</p>
+                    <div class="chart-bar">
+                        <div style="display: flex; justify-content: space-between; margin-bottom: 5px; font-size: 0.85rem;">
+                            <span>120/80</span><span>125/82</span><span>118/78</span><span>122/80</span><span>120/79</span>
+                        </div>
+                        <div style="display: flex; gap: 5px; height: 60px; align-items: flex-end;">
+                            <div style="flex: 1; background: #0d9488; height: 40px; border-radius: 8px 8px 0 0;"></div>
+                            <div style="flex: 1; background: #14b8a6; height: 48px; border-radius: 8px 8px 0 0;"></div>
+                            <div style="flex: 1; background: #0d9488; height: 35px; border-radius: 8px 8px 0 0;"></div>
+                            <div style="flex: 1; background: #14b8a6; height: 42px; border-radius: 8px 8px 0 0;"></div>
+                            <div style="flex: 1; background: #0d9488; height: 38px; border-radius: 8px 8px 0 0;"></div>
+                        </div>
+                    </div>
+                </div>
+                <div>
+                    <p style="font-weight: bold; margin-bottom: 10px;">⚖️ Вес членов семьи (текущий)</p>
+                    <div style="display: flex; align-items: flex-end; gap: 8px; height: 80px;">
+                        <div style="flex: 1; text-align: center;"><div style="background: #0d9488; height: 87px; border-radius: 8px 8px 0 0;"></div><span style="font-size: 12px;">Папа 87кг</span></div>
+                        <div style="flex: 1; text-align: center;"><div style="background: #14b8a6; height: 60px; border-radius: 8px 8px 0 0;"></div><span style="font-size: 12px;">Мама 60кг</span></div>
+                        <div style="flex: 1; text-align: center;"><div style="background: #0d9488; height: 55px; border-radius: 8px 8px 0 0;"></div><span style="font-size: 12px;">Катя 55кг</span></div>
+                        <div style="flex: 1; text-align: center;"><div style="background: #14b8a6; height: 50px; border-radius: 8px 8px 0 0;"></div><span style="font-size: 12px;">Ева 50кг</span></div>
+                    </div>
+                </div>
+            </div>
+            <p style="font-size: 12px; color: #888; margin-top: 15px;">📈 Данные обновляются еженедельно. Следим за здоровьем вместе!</p>
+        </section>
+
+        <!-- ТРЕКЕР ПРИЁМА ЛЕКАРСТВ -->
+        <section class="card">
+            <h2>💊 Трекер приёма лекарств</h2>
+            <p style="margin-bottom: 15px; color: #555;">Отмечайте принятые лекарства. Счётчик обнуляется каждый день.</p>
+            
+            <!-- Поиск -->
+            <div style="margin-bottom: 15px;">
+                <input type="text" id="medSearchInput" placeholder="🔍 Найти лекарство..." 
+                       style="width: 100%; padding: 12px 16px; border: 2px solid #e2e8f0; border-radius: 40px; font-size: 1rem; outline: none;">
+            </div>
+            
+            <div id="medicationList" class="medication-list"></div>
+            <button id="resetMedicationsBtn" class="reset-btn">🔄 Новый день (сбросить все галочки)</button>
+        </section>
+
+        <!-- ТРЕКЕР ВОДЫ -->
+        <section class="card">
+            <h2>💧 Трекер воды</h2>
+            <p style="margin-bottom: 15px; color: #555;">Отмечайте выпитые стаканы воды. Норма: Папа и Мама — 8, Катя — 7, Ева — 6 стаканов.</p>
+            <div id="waterTracker" class="water-tracker"></div>
+        </section>
+
+        <!-- КАЛЕНДАРЬ ПРИВИВОК -->
+        <section class="card">
+            <h2>💉 Календарь прививок</h2>
+            <div id="vaccineList" class="vaccine-list"></div>
+            <p style="font-size: 12px; color: #888; margin-top: 15px;">🟢 Сделано &nbsp;&nbsp;🟡 Скоро &nbsp;&nbsp;🔴 Просрочено</p>
+        </section>
+
+        <!-- СРОКИ ГОДНОСТИ -->
+        <section class="card">
+            <h2>📅 Сроки годности аптечки</h2>
+            <p style="margin-bottom: 15px; color: #555;">Цвет показывает актуальность. Проверяйте раз в месяц.</p>
+            <div id="expiryList" class="expiry-list"></div>
+            <p style="font-size: 12px; color: #888; margin-top: 15px;">🟢 Срок более 3 мес. &nbsp;&nbsp;🟡 Истекает скоро &nbsp;&nbsp;🔴 Просрочено</p>
+        </section>
+
+        <!-- ТРЕВОЖНЫЙ ЧЕМОДАНЧИК -->
+        <section class="card">
+            <h2>🎒 Тревожный чемоданчик</h2>
+            <p style="margin-bottom: 15px; color: #555;">Проверьте, всё ли готово для экстренного визита в больницу.</p>
+            <div id="emergencyBag" class="emergency-bag"></div>
+        </section>
+
+        <!-- ЗАМЕТКИ ВРАЧА -->
+        <section class="card">
+            <h2>📝 Заметки врача</h2>
+            <p style="margin-bottom: 15px; color: #555;">Записывайте рекомендации с приёмов. Всё сохраняется автоматически.</p>
+            <textarea id="doctorNotes" placeholder="Например: Папе — повторить ЭКГ через месяц. Еве — курс витамина D до апреля..." 
+                      style="width: 100%; min-height: 120px; padding: 15px; border: 2px solid #e2e8f0; border-radius: 16px; font-size: 1rem; resize: vertical; font-family: inherit;"></textarea>
+            <div style="display: flex; justify-content: space-between; margin-top: 10px;">
+                <span style="font-size: 12px; color: #888;">💾 Автосохранение включено</span>
+                <button id="clearNotesBtn" style="background: none; border: none; color: #ef4444; cursor: pointer; font-size: 14px;">🗑️ Очистить</button>
+            </div>
+        </section>
+
+        <!-- ЭКСТРЕННЫЕ КОНТАКТЫ -->
+        <section class="card contacts">
+            <h2>📞 Экстренные контакты</h2>
+            <div class="contacts-grid">
+                <div class="contact-item"><span class="emoji">🚑</span><div><div class="contact-name">Скорая помощь</div><a href="tel:103" class="contact-phone">103</a></div></div>
+                <div class="contact-item"><span class="emoji">👨‍⚕️</span><div><div class="contact-name">Семейный врач (Петрова А.П.)</div><a href="tel:+73452597895" class="contact-phone">+7 (3452) 59-78-95</a></div></div>
+                <div class="contact-item"><span class="emoji">🐾</span><div><div class="contact-name">Ветклиника «Добрый доктор»</div><a href="tel:+73452123456" class="contact-phone">+7 (3452) 12-34-56</a></div></div>
+                <div class="contact-item"><span class="emoji">💊</span><div><div class="contact-name">Дежурная аптека</div><a href="tel:+73452334455" class="contact-phone">+7 (3452) 33-44-55</a></div></div>
+            </div>
+        </section>
+
+        <!-- ПОДВАЛ -->
+        <footer>
+            <p>🚀 Проект для конкурса</p>
+            <p style="margin-top: 10px; font-size: 14px;">🔒 Все данные хранятся локально. Конфиденциальность гарантирована.</p>
+            <p style="margin-top: 8px; font-size: 14px;">❤️ Семья</p>
+        </footer>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
