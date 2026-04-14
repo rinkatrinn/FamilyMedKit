@@ -1,80 +1,10 @@
 // ========== ДАННЫЕ СЕМЬИ РОНИНЫХ ==========
 const familyData = [
-    { 
-        id: 'dad', 
-        name: 'Папа', 
-        icon: '👨', 
-        details: { 
-            fullName: 'Сергей Ронин', 
-            birthYear: 1985, 
-            age: 41,
-            bloodType: 'II (A) Rh+', 
-            allergies: 'Нет', 
-            chronic: 'Гипертония', 
-            height: '180 см', 
-            weight: '87 кг' 
-        } 
-    },
-    { 
-        id: 'mom', 
-        name: 'Мама', 
-        icon: '👩', 
-        details: { 
-            fullName: 'Татьяна Ронина', 
-            birthYear: 1981, 
-            age: 45,
-            bloodType: 'I (0) Rh+', 
-            allergies: 'Нет', 
-            chronic: 'Нет', 
-            height: '156 см', 
-            weight: '60 кг' 
-        } 
-    },
-    { 
-        id: 'katya', 
-        name: 'Катя', 
-        icon: '👩', 
-        details: { 
-            fullName: 'Катя Ронина', 
-            birthYear: 2006, 
-            age: 20,
-            bloodType: 'II (A) Rh+', 
-            allergies: 'Нет', 
-            chronic: 'Нет', 
-            height: '170 см', 
-            weight: '55 кг' 
-        } 
-    },
-    { 
-        id: 'eva', 
-        name: 'Ева', 
-        icon: '👧', 
-        details: { 
-            fullName: 'Ева Ронина', 
-            birthYear: 2011, 
-            age: 15,
-            bloodType: 'I (0) Rh+', 
-            allergies: 'Нет', 
-            chronic: 'Нет', 
-            height: '156 см', 
-            weight: '50 кг' 
-        } 
-    },
-    { 
-        id: 'cat', 
-        name: 'Барсик', 
-        icon: '🐱', 
-        details: { 
-            fullName: 'Барсик Ронин', 
-            birthYear: 2023, 
-            age: 3,
-            bloodType: '—', 
-            allergies: 'Курица', 
-            chronic: 'Нет', 
-            breed: 'Британский', 
-            vetPassport: '№ 567890' 
-        } 
-    }
+    { id: 'dad', name: 'Папа', icon: '👨', details: { fullName: 'Сергей Ронин', birthYear: 1985, age: 41, bloodType: 'II (A) Rh+', allergies: 'Нет', chronic: 'Гипертония', height: '180 см', weight: '87 кг' } },
+    { id: 'mom', name: 'Мама', icon: '👩', details: { fullName: 'Татьяна Ронина', birthYear: 1981, age: 45, bloodType: 'I (0) Rh+', allergies: 'Нет', chronic: 'Нет', height: '156 см', weight: '60 кг' } },
+    { id: 'katya', name: 'Катя', icon: '👩', details: { fullName: 'Катя Ронина', birthYear: 2006, age: 20, bloodType: 'II (A) Rh+', allergies: 'Нет', chronic: 'Нет', height: '170 см', weight: '55 кг' } },
+    { id: 'eva', name: 'Ева', icon: '👧', details: { fullName: 'Ева Ронина', birthYear: 2011, age: 15, bloodType: 'I (0) Rh+', allergies: 'Нет', chronic: 'Нет', height: '156 см', weight: '50 кг' } },
+    { id: 'cat', name: 'Барсик', icon: '🐱', details: { fullName: 'Барсик Ронин', birthYear: 2023, age: 3, bloodType: '—', allergies: 'Курица', chronic: 'Нет', breed: 'Британский', vetPassport: '№ 567890' } }
 ];
 
 // ========== ЛЕКАРСТВА ==========
@@ -114,7 +44,15 @@ const waterData = [
 ];
 
 // ========== ТРЕВОЖНЫЙ ЧЕМОДАНЧИК ==========
-const emergencyBagItems = ['Паспорта', 'Полисы ОМС', 'Деньги', 'Зарядка', 'Вода', 'Сменная одежда', 'Салфетки', 'Телефоны', 'Переноска Барсика'];
+const emergencyBagItems = ['Паспорта', 'Полисы ОМС', 'Деньги', 'Зарядка', 'Вода', 'Сменная одежда', 'Салфетки', 'Игрушка Евы', 'Переноска Барсика'];
+
+// ========== ДАННЫЕ АНАЛИЗОВ ==========
+const analysisData = [
+    { name: 'Общий анализ крови', for: 'Катя', date: '2026-03-15', result: 'Норма', status: 'normal' },
+    { name: 'Холестерин', for: 'Папа', date: '2026-02-20', result: 'Повышен', status: 'warning' },
+    { name: 'Витамин D', for: 'Ева', date: '2026-03-01', result: 'Понижен', status: 'critical' },
+    { name: 'Глюкоза', for: 'Мама', date: '2026-03-10', result: 'Норма', status: 'normal' }
+];
 
 // ========== ОТРИСОВКА ПРОФИЛЕЙ ==========
 function renderFamilyProfiles() {
@@ -257,6 +195,82 @@ function renderEmergencyBag() {
     });
 }
 
+// ========== ОТРИСОВКА АНАЛИЗОВ ==========
+function renderAnalysis() {
+    const container = document.getElementById('analysisList');
+    if (!container) return;
+    const saved = JSON.parse(localStorage.getItem('roninAnalysis') || 'null');
+    const data = saved || analysisData;
+    container.innerHTML = '';
+    data.forEach(item => {
+        const div = document.createElement('div');
+        div.className = 'analysis-item';
+        div.innerHTML = `<div class="analysis-info"><div class="analysis-name">🔬 ${item.name}</div><div class="analysis-for">👤 ${item.for}</div><div class="analysis-date">📅 ${item.date}</div></div><div class="analysis-result ${item.status}">${item.result}</div>`;
+        container.appendChild(div);
+    });
+}
+
+// ========== КНОПКИ ДОБАВЛЕНИЯ ==========
+function setupAddButtons() {
+    const addMedBtn = document.getElementById('addMedBtn');
+    if (addMedBtn) {
+        addMedBtn.addEventListener('click', () => {
+            const name = prompt('Название лекарства:');
+            if (!name) return;
+            const forWhom = prompt('Для кого (например: Папа, Катя):');
+            const time = prompt('Время приёма (например: Утро):');
+            medicationsData.push({ id: Date.now(), name, for: forWhom || 'Вся семья', time: time || 'Утро', completed: false });
+            renderMedications();
+            document.getElementById('totalMeds').textContent = medicationsData.length;
+            alert('✅ Лекарство добавлено!');
+        });
+    }
+    
+    const addVaccineBtn = document.getElementById('addVaccineBtn');
+    if (addVaccineBtn) {
+        addVaccineBtn.addEventListener('click', () => {
+            const name = prompt('Название прививки:');
+            if (!name) return;
+            const forWhom = prompt('Для кого:');
+            const date = prompt('Дата (ГГГГ-ММ-ДД):', '2026-06-01');
+            vaccineData.push({ name, for: forWhom || 'Вся семья', date: date || '2026-06-01', status: 'soon' });
+            renderVaccines();
+            alert('✅ Прививка добавлена!');
+        });
+    }
+    
+    const addExpiryBtn = document.getElementById('addExpiryBtn');
+    if (addExpiryBtn) {
+        addExpiryBtn.addEventListener('click', () => {
+            const name = prompt('Название препарата:');
+            if (!name) return;
+            const date = prompt('Срок годности (ГГГГ-ММ-ДД):', '2027-01-01');
+            expiryData.push({ name, date: date || '2027-01-01' });
+            renderExpiry();
+            alert('✅ Препарат добавлен!');
+        });
+    }
+    
+    const addAnalysisBtn = document.getElementById('addAnalysisBtn');
+    if (addAnalysisBtn) {
+        addAnalysisBtn.addEventListener('click', () => {
+            const name = prompt('Название анализа:');
+            if (!name) return;
+            const forWhom = prompt('Для кого:');
+            const date = prompt('Дата (ГГГГ-ММ-ДД):', '2026-04-01');
+            const result = prompt('Результат (Норма / Повышен / Понижен):', 'Норма');
+            let status = 'normal';
+            if (result.toLowerCase().includes('повыш')) status = 'warning';
+            if (result.toLowerCase().includes('пониж')) status = 'critical';
+            const saved = JSON.parse(localStorage.getItem('roninAnalysis') || '[]');
+            saved.push({ name, for: forWhom, date: date || '2026-04-01', result, status });
+            localStorage.setItem('roninAnalysis', JSON.stringify(saved));
+            renderAnalysis();
+            alert('✅ Анализ добавлен!');
+        });
+    }
+}
+
 // ========== СЧЁТЧИК ДНЕЙ БЕЗ БОЛЕЗНЕЙ ==========
 function updateHealthyCounter() {
     const lastSick = new Date('2026-02-28');
@@ -273,11 +287,12 @@ document.addEventListener('DOMContentLoaded', () => {
     renderVaccines();
     renderWaterTracker();
     renderEmergencyBag();
+    renderAnalysis();
+    setupAddButtons();
     updateHealthyCounter();
     
     document.getElementById('totalMeds').textContent = medicationsData.length;
     
-    // Поиск по лекарствам
     document.getElementById('medSearchInput').addEventListener('input', e => {
         const s = e.target.value.toLowerCase();
         document.querySelectorAll('.med-item').forEach(el => {
@@ -287,14 +302,12 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     });
     
-    // Сброс лекарств
     document.getElementById('resetMedicationsBtn').addEventListener('click', () => {
         medicationsData.forEach(m => m.completed = false);
         renderMedications();
         alert('🔄 Новый день! Галочки сброшены.');
     });
     
-    // Переключение темы
     const themeBtn = document.getElementById('themeToggle');
     themeBtn.addEventListener('click', () => {
         document.body.classList.toggle('dark-theme');
@@ -306,7 +319,6 @@ document.addEventListener('DOMContentLoaded', () => {
         themeBtn.textContent = '☀️';
     }
     
-    // Заметки врача
     const notesArea = document.getElementById('doctorNotes');
     const savedNotes = localStorage.getItem('roninNotes');
     if (savedNotes) notesArea.value = savedNotes;
@@ -315,7 +327,6 @@ document.addEventListener('DOMContentLoaded', () => {
         if (confirm('Очистить заметки?')) { notesArea.value = ''; localStorage.removeItem('roninNotes'); }
     });
     
-    // Копирование экстренной информации
     document.getElementById('copyEmergencyBtn').addEventListener('click', () => {
         const txt = `СЕМЬЯ РОНИНЫХ (ЭКСТРЕННАЯ ИНФОРМАЦИЯ):
 Папа Сергей (41 год): II(A) Rh+, аллергия на пенициллин
